@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func didLogin()
+}
+
 final class LoginViewController: UIViewController {
     
     let bankeyLabel = UILabel()
@@ -14,6 +18,8 @@ final class LoginViewController: UIViewController {
     let loginView = LoginView()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
+    
+    weak var delegate: LoginViewControllerDelegate?
     
     var username: String? {
         loginView.usernameTextField.text
@@ -27,6 +33,10 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         style()
         layout()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        signInButton.configuration?.showsActivityIndicator = false
     }
 }
 
@@ -119,15 +129,16 @@ extension LoginViewController {
             return
         }
         
-        if username.isEmpty || password.isEmpty {
-            configureView(withMessage: "Username / password can not be empty")
-            return
-        }
+        //        if username.isEmpty || password.isEmpty {
+        //            configureView(withMessage: "Username / password can not be empty")
+        //            return
+        //        }
         
         if username == "Gizem" && password == "Welcome" {
             signInButton.configuration?.showsActivityIndicator = true
         } else {
-            configureView(withMessage: "Incorrect username / password")
+            // configureView(withMessage: "Incorrect username / password")
+            delegate?.didLogin()
         }
     }
     
