@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dummyViewController.logoutDelegate = self
         
         // window?.rootViewController = loginViewController
-        window?.rootViewController = mainTabBarViewController
-      //  mainTabBarViewController.selectedIndex = 1
+        //window?.rootViewController = mainTabBarViewController
+        window?.rootViewController = AccountSummaryViewController()
         
         return true
     }
