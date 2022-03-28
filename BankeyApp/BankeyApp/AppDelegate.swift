@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let loginViewController = LoginViewController()
     let onboardingContainerViewController = OnboardingContainerViewController()
-    let dummyViewController = DummyViewController()
     let mainTabBarViewController = MainTabBarViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -28,11 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         loginViewController.delegate = self
         onboardingContainerViewController.delegate = self
-        dummyViewController.logoutDelegate = self
         
-        // window?.rootViewController = loginViewController
-        //window?.rootViewController = mainTabBarViewController
-        window?.rootViewController = AccountSummaryViewController()
+        let vc = mainTabBarViewController
+        vc.setStatusBar()
+        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
+        
+        window?.rootViewController = vc
         
         return true
     }
@@ -83,8 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 }
-// MARK: - Screen Transition
 
+// MARK: - Screen Transition
 extension AppDelegate {
     func setRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard animated, let window = self.window else {
@@ -106,7 +108,7 @@ extension AppDelegate {
 extension AppDelegate: LoginViewControllerDelegate {
     func didLogin() {
         if LocalState.hasOnboarded {
-            setRootViewController(dummyViewController)
+            setRootViewController(mainTabBarViewController)
         } else {
             setRootViewController(onboardingContainerViewController)
         }
@@ -116,7 +118,7 @@ extension AppDelegate: LoginViewControllerDelegate {
 extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
         LocalState.hasOnboarded = true
-        setRootViewController(dummyViewController)
+        setRootViewController(mainTabBarViewController)
     }
 }
 
