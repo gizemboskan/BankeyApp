@@ -38,6 +38,7 @@ final class AccountSummaryTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - Setup & Layout
 extension AccountSummaryTableViewCell {
     private func setup() {
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -99,9 +100,9 @@ extension AccountSummaryTableViewCell {
     }
 }
 
+// MARK: - Helpers
 extension AccountSummaryTableViewCell {
     func configure(with vm: AccountSummaryTableViewCellViewModel) {
-        
         typeLabel.text = vm.accountType.rawValue
         nameLabel.text = vm.accountName
         balanceAmountLabel.attributedText = vm.balanceAttributedString

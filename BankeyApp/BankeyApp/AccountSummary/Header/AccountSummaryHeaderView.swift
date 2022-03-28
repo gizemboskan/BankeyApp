@@ -28,6 +28,7 @@ final class AccountSummaryHeaderView: UIView {
     }
 }
 
+// MARK: - commonInit
 private extension AccountSummaryHeaderView {
     func commonInit() {
         let bundle = Bundle(for: AccountSummaryHeaderView.self)

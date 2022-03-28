@@ -28,13 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginViewController.delegate = self
         onboardingContainerViewController.delegate = self
         
-        let vc = mainTabBarViewController
-        vc.setStatusBar()
-        
-        UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().backgroundColor = appColor
-        
-        window?.rootViewController = vc
+        displayLogin()
         
         return true
     }
@@ -69,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     // MARK: - Core Data Saving support
-    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -87,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // MARK: - Screen Transition
-extension AppDelegate {
+private extension AppDelegate {
     func setRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard animated, let window = self.window else {
             self.window?.rootViewController = vc
@@ -105,23 +98,44 @@ extension AppDelegate {
     }
 }
 
-extension AppDelegate: LoginViewControllerDelegate {
-    func didLogin() {
+// MARK: - Helpers
+private extension AppDelegate {
+    func displayLogin() {
+        setRootViewController(loginViewController)
+    }
+    
+    func displayNextScreen() {
         if LocalState.hasOnboarded {
             setRootViewController(mainTabBarViewController)
         } else {
             setRootViewController(onboardingContainerViewController)
         }
     }
+    
+    func prepMainView() {
+        mainTabBarViewController.setStatusBar()
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
+    }
 }
 
+// MARK: - LoginViewControllerDelegate
+extension AppDelegate: LoginViewControllerDelegate {
+    func didLogin() {
+        displayNextScreen()
+    }
+}
+
+// MARK: - OnboardingContainerViewControllerDelegate
 extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
         LocalState.hasOnboarded = true
+        prepMainView()
         setRootViewController(mainTabBarViewController)
     }
 }
 
+// MARK: - LogoutDelegate
 extension AppDelegate: LogoutDelegate {
     func didLogout() {
         setRootViewController(loginViewController)

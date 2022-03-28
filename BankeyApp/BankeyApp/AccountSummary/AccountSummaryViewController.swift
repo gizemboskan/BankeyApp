@@ -35,7 +35,7 @@ extension AccountSummaryViewController {
     
     private func setupTableView() {
         tableView.backgroundColor = appColor
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -73,6 +73,7 @@ extension AccountSummaryViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension AccountSummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard !accounts.isEmpty else { return UITableViewCell() }
@@ -90,12 +91,14 @@ extension AccountSummaryViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
 extension AccountSummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
 }
 
+// MARK: - Helpers
 extension AccountSummaryViewController {
     private func fetchData() {
         let savings = AccountSummaryTableViewCellViewModel(accountType: .Banking,
