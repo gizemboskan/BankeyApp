@@ -13,6 +13,8 @@
 		7A6A060627F1E07C0027E1E7 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060527F1E07C0027E1E7 /* CurrencyFormatter.swift */; };
 		7A6A060827F1E1E60027E1E7 /* Decimal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060727F1E1E60027E1E7 /* Decimal+Extension.swift */; };
 		7A6A060B27F1FFA60027E1E7 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060A27F1FFA60027E1E7 /* CurrencyFormatterTests.swift */; };
+		7A6A060D27F240490027E1E7 /* NSNotification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060C27F240490027E1E7 /* NSNotification.Name+Extension.swift */; };
+		7A6A060F27F2420E0027E1E7 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060E27F2420E0027E1E7 /* UITextField+Extension.swift */; };
 		7AE5DD2527EA23AD008FBF9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD2427EA23AD008FBF9D /* AppDelegate.swift */; };
 		7AE5DD2927EA23AD008FBF9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD2827EA23AD008FBF9D /* LoginViewController.swift */; };
 		7AE5DD2F27EA23AD008FBF9D /* BankeyApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD2D27EA23AD008FBF9D /* BankeyApp.xcdatamodeld */; };
@@ -23,7 +25,6 @@
 		7AE5DD5C27EA26CD008FBF9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD5B27EA26CD008FBF9D /* LoginView.swift */; };
 		7AE5DD6127EC8EDC008FBF9D /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD6027EC8EDC008FBF9D /* OnboardingContainerViewController.swift */; };
 		7AE5DD6327EC91B1008FBF9D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD6227EC91B1008FBF9D /* OnboardingViewController.swift */; };
-		7AE5DD6527ECBAF3008FBF9D /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD6427ECBAF3008FBF9D /* DummyViewController.swift */; };
 		7AE5DD6827EDB77D008FBF9D /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD6727EDB77D008FBF9D /* LocalState.swift */; };
 		7AE5DD6A27EE149C008FBF9D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD6927EE149C008FBF9D /* UIViewController+Extension.swift */; };
 		7AE5DD6D27EE15F4008FBF9D /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD6C27EE15F4008FBF9D /* MainTabBarViewController.swift */; };
@@ -58,6 +59,8 @@
 		7A6A060527F1E07C0027E1E7 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		7A6A060727F1E1E60027E1E7 /* Decimal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extension.swift"; sourceTree = "<group>"; };
 		7A6A060A27F1FFA60027E1E7 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
+		7A6A060C27F240490027E1E7 /* NSNotification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+Extension.swift"; sourceTree = "<group>"; };
+		7A6A060E27F2420E0027E1E7 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		7AE5DD2127EA23AD008FBF9D /* BankeyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankeyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE5DD2427EA23AD008FBF9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AE5DD2827EA23AD008FBF9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +75,6 @@
 		7AE5DD5B27EA26CD008FBF9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7AE5DD6027EC8EDC008FBF9D /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		7AE5DD6227EC91B1008FBF9D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		7AE5DD6427ECBAF3008FBF9D /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		7AE5DD6727EDB77D008FBF9D /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		7AE5DD6927EE149C008FBF9D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7AE5DD6C27EE15F4008FBF9D /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +197,6 @@
 			children = (
 				7AE5DD2827EA23AD008FBF9D /* LoginViewController.swift */,
 				7AE5DD5B27EA26CD008FBF9D /* LoginView.swift */,
-				7AE5DD6427ECBAF3008FBF9D /* DummyViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -217,6 +218,8 @@
 				7A6A060027F118900027E1E7 /* NSAttributedString+Extension.swift */,
 				7A6A060527F1E07C0027E1E7 /* CurrencyFormatter.swift */,
 				7A6A060727F1E1E60027E1E7 /* Decimal+Extension.swift */,
+				7A6A060C27F240490027E1E7 /* NSNotification.Name+Extension.swift */,
+				7A6A060E27F2420E0027E1E7 /* UITextField+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -390,9 +393,9 @@
 				7AE5DD6A27EE149C008FBF9D /* UIViewController+Extension.swift in Sources */,
 				7A6A05FD27F0CECA0027E1E7 /* AccountSummaryTableViewCell.swift in Sources */,
 				7AE5DD7727EE174A008FBF9D /* MoreViewController.swift in Sources */,
-				7AE5DD6527ECBAF3008FBF9D /* DummyViewController.swift in Sources */,
 				7AE5DD2927EA23AD008FBF9D /* LoginViewController.swift in Sources */,
 				7A6A060827F1E1E60027E1E7 /* Decimal+Extension.swift in Sources */,
+				7A6A060F27F2420E0027E1E7 /* UITextField+Extension.swift in Sources */,
 				7AE5DD6327EC91B1008FBF9D /* OnboardingViewController.swift in Sources */,
 				7AE5DD2F27EA23AD008FBF9D /* BankeyApp.xcdatamodeld in Sources */,
 				7A6A060627F1E07C0027E1E7 /* CurrencyFormatter.swift in Sources */,
@@ -404,6 +407,7 @@
 				7AE5DD7927F0AE20008FBF9D /* AccountSummaryHeaderView.swift in Sources */,
 				7AE5DD6827EDB77D008FBF9D /* LocalState.swift in Sources */,
 				7AE5DD7527EE173A008FBF9D /* MoveMoneyViewController.swift in Sources */,
+				7A6A060D27F240490027E1E7 /* NSNotification.Name+Extension.swift in Sources */,
 				7A6A060427F1DB480027E1E7 /* AccountSummaryTableViewCellViewModel.swift in Sources */,
 				7AE5DD6D27EE15F4008FBF9D /* MainTabBarViewController.swift in Sources */,
 			);
