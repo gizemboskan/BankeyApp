@@ -12,11 +12,11 @@
 		7A6A060427F1DB480027E1E7 /* AccountSummaryTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060327F1DB480027E1E7 /* AccountSummaryTableViewCellViewModel.swift */; };
 		7A6A060627F1E07C0027E1E7 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060527F1E07C0027E1E7 /* CurrencyFormatter.swift */; };
 		7A6A060827F1E1E60027E1E7 /* Decimal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060727F1E1E60027E1E7 /* Decimal+Extension.swift */; };
+		7A6A060B27F1FFA60027E1E7 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060A27F1FFA60027E1E7 /* CurrencyFormatterTests.swift */; };
 		7AE5DD2527EA23AD008FBF9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD2427EA23AD008FBF9D /* AppDelegate.swift */; };
 		7AE5DD2927EA23AD008FBF9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD2827EA23AD008FBF9D /* LoginViewController.swift */; };
 		7AE5DD2F27EA23AD008FBF9D /* BankeyApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD2D27EA23AD008FBF9D /* BankeyApp.xcdatamodeld */; };
 		7AE5DD3127EA23B2008FBF9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AE5DD3027EA23B2008FBF9D /* Assets.xcassets */; };
-		7AE5DD3F27EA23B2008FBF9D /* BankeyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD3E27EA23B2008FBF9D /* BankeyAppTests.swift */; };
 		7AE5DD4927EA23B2008FBF9D /* BankeyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD4827EA23B2008FBF9D /* BankeyAppUITests.swift */; };
 		7AE5DD4B27EA23B2008FBF9D /* BankeyAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5DD4A27EA23B2008FBF9D /* BankeyAppUITestsLaunchTests.swift */; };
 		7AE5DD5A27EA25FE008FBF9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AE5DD5927EA25FE008FBF9D /* LaunchScreen.storyboard */; };
@@ -57,6 +57,7 @@
 		7A6A060327F1DB480027E1E7 /* AccountSummaryTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		7A6A060527F1E07C0027E1E7 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		7A6A060727F1E1E60027E1E7 /* Decimal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extension.swift"; sourceTree = "<group>"; };
+		7A6A060A27F1FFA60027E1E7 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		7AE5DD2127EA23AD008FBF9D /* BankeyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankeyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE5DD2427EA23AD008FBF9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AE5DD2827EA23AD008FBF9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		7AE5DD3027EA23B2008FBF9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AE5DD3527EA23B2008FBF9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AE5DD3A27EA23B2008FBF9D /* BankeyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankeyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7AE5DD3E27EA23B2008FBF9D /* BankeyAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankeyAppTests.swift; sourceTree = "<group>"; };
 		7AE5DD4427EA23B2008FBF9D /* BankeyAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankeyAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE5DD4827EA23B2008FBF9D /* BankeyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankeyAppUITests.swift; sourceTree = "<group>"; };
 		7AE5DD4A27EA23B2008FBF9D /* BankeyAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankeyAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		7AE5DD3D27EA23B2008FBF9D /* BankeyAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				7AE5DD3E27EA23B2008FBF9D /* BankeyAppTests.swift */,
+				7A6A060A27F1FFA60027E1E7 /* CurrencyFormatterTests.swift */,
 			);
 			path = BankeyAppTests;
 			sourceTree = "<group>";
@@ -326,6 +326,7 @@
 					};
 					7AE5DD3927EA23B2008FBF9D = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
 						TestTargetID = 7AE5DD2027EA23AD008FBF9D;
 					};
 					7AE5DD4327EA23B2008FBF9D = {
@@ -412,7 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AE5DD3F27EA23B2008FBF9D /* BankeyAppTests.swift in Sources */,
+				7A6A060B27F1FFA60027E1E7 /* CurrencyFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +615,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -627,6 +629,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = learnings.BankeyAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BankeyApp.app/BankeyApp";
@@ -638,6 +641,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
