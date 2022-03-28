@@ -10,6 +10,8 @@ import UIKit
 
 final class AccountSummaryTableViewCell: UITableViewCell {
     
+    lazy var viewModel: AccountSummaryTableViewCellViewModel? = nil
+    
     let typeLabel = UILabel()
     let underlineView = UIView()
     let nameLabel = UILabel()
@@ -17,11 +19,12 @@ final class AccountSummaryTableViewCell: UITableViewCell {
     let balanceStackView = UIStackView()
     let balanceLabel = UILabel()
     let balanceAmountLabel = UILabel()
+    let balanceAmountLabelAttributedText = NSMutableAttributedString()
     
     let chevronImageView = UIImageView()
     
     static let reuseID = "AccountSummaryTableViewCell"
-    static let rowHeight: CGFloat = 100.0
+    static let rowHeight: CGFloat = 112.0
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,7 +63,7 @@ extension AccountSummaryTableViewCell {
         
         balanceAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         balanceAmountLabel.textAlignment = .right
-        balanceAmountLabel.text = "$929,466.63"
+        balanceAmountLabel.attributedText = balanceAmountLabelAttributedText.makeFormattedBalance(dollars: "XXX,XXX", cents: "XX")
         
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false
         let chevronImage = UIImage(systemName: "chevron.right")!.withTintColor(appColor, renderingMode: .alwaysOriginal)
@@ -93,5 +96,26 @@ extension AccountSummaryTableViewCell {
             chevronImageView.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 1),
             trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: 1)
         ])
+    }
+}
+
+extension AccountSummaryTableViewCell {
+    func configure(with vm: AccountSummaryTableViewCellViewModel) {
+        
+        typeLabel.text = vm.accountType.rawValue
+        nameLabel.text = vm.accountName
+        balanceAmountLabel.attributedText = vm.balanceAttributedString
+        
+        switch vm.accountType {
+        case .Banking:
+            underlineView.backgroundColor = appColor
+            balanceLabel.text = "Current balance"
+        case .CreditCard:
+            underlineView.backgroundColor = .systemOrange
+            balanceLabel.text = "Balance"
+        case .Investment:
+            underlineView.backgroundColor = .systemPurple
+            balanceLabel.text = "Value"
+        }
     }
 }
