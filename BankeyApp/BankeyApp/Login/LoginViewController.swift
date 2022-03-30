@@ -29,13 +29,26 @@ final class LoginViewController: UIViewController {
         loginView.passwordTextField.text
     }
     
+    // animation
+    var leadingEdgeOnScreen: CGFloat = 16.0
+    var leadingEdgeOffScreen: CGFloat = -1000.0
+    
+    var titleLeadingAnchor: NSLayoutConstraint?
+    var subtitleLeadingAnchor: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animate()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         signInButton.configuration?.showsActivityIndicator = false
     }
 }
@@ -46,12 +59,13 @@ extension LoginViewController {
         bankeyLabel.translatesAutoresizingMaskIntoConstraints = false
         bankeyLabel.textAlignment = .center
         bankeyLabel.textColor = .darkGray
+        bankeyLabel.font = UIFont.systemFont(ofSize: 28.0, weight: .bold)
         bankeyLabel.numberOfLines = 0
         bankeyLabel.text = "Bankey"
         
         bankeyInfoLabel.translatesAutoresizingMaskIntoConstraints = false
         bankeyInfoLabel.textAlignment = .center
-        bankeyInfoLabel.textColor = .lightGray
+        bankeyInfoLabel.textColor = .gray
         bankeyInfoLabel.numberOfLines = 0
         bankeyInfoLabel.text = "Your premium source for all things in banking!"
         
@@ -79,19 +93,21 @@ extension LoginViewController {
         
         // bankeyLabel
         NSLayoutConstraint.activate([
-            bankeyLabel.topAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: view.topAnchor, multiplier: 16.0),
-            bankeyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            bankeyLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1.0)
-            
+            bankeyInfoLabel.topAnchor.constraint(equalToSystemSpacingBelow: bankeyLabel.bottomAnchor, multiplier: 3.0),
+            bankeyLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
         ])
+        
+        titleLeadingAnchor = bankeyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
+        titleLeadingAnchor?.isActive = true
         
         // bankeyInfoLabel
         NSLayoutConstraint.activate([
-            bankeyInfoLabel.topAnchor.constraint(equalToSystemSpacingBelow: bankeyLabel.bottomAnchor, multiplier: 2.0),
-            bankeyInfoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            bankeyInfoLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1.0)
-            
+            loginView.topAnchor.constraint(equalToSystemSpacingBelow: bankeyInfoLabel.bottomAnchor, multiplier: 3.0),
+            bankeyInfoLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
         ])
+        
+        subtitleLeadingAnchor = bankeyInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
+        subtitleLeadingAnchor?.isActive = true
         
         // loginView
         NSLayoutConstraint.activate([
@@ -145,5 +161,22 @@ extension LoginViewController {
     private func configureView(withMessage message: String) {
         errorMessageLabel.isHidden = false
         errorMessageLabel.text = message
+    }
+}
+
+// MARK: - Animations
+private extension LoginViewController {
+    func animate() {
+        let animator1 = UIViewPropertyAnimator(duration: 3.0, curve: .easeInOut) {
+            self.titleLeadingAnchor?.constant = self.leadingEdgeOnScreen
+            self.view.layoutIfNeeded()
+        }
+        animator1.startAnimation()
+        
+        let animator2 = UIViewPropertyAnimator(duration: 3.0, curve: .easeInOut) {
+            self.subtitleLeadingAnchor?.constant = self.leadingEdgeOnScreen
+            self.view.layoutIfNeeded()
+        }
+        animator2.startAnimation(afterDelay: 1.0)
     }
 }

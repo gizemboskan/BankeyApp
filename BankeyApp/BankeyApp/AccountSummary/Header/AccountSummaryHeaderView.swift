@@ -10,6 +10,9 @@ import UIKit
 final class AccountSummaryHeaderView: UIView {
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,5 +44,14 @@ private extension AccountSummaryHeaderView {
         contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+}
+
+// MARK: - configure
+extension AccountSummaryHeaderView {
+    func configure(viewModel: AccountSummaryHeaderViewModel) {
+        welcomeLabel.text = viewModel.welcomeMessage
+        nameLabel.text = viewModel.name
+        dateLabel.text = viewModel.dateFormatted
     }
 }
