@@ -17,8 +17,10 @@ final class AccountSummaryViewController: UIViewController {
     var accountSummaryHeaderViewModel = AccountSummaryHeaderViewModel(welcomeMessage: "Welcome", name: "", date: Date())
     var accountSummaryTableViewCellViewModel: [AccountSummaryTableViewCellViewModel] = []
     
+    // Components
     var tableView = UITableView()
     var headerView = AccountSummaryHeaderView(frame: .zero)
+    let refreshControl = UIRefreshControl()
     
     lazy var logoutBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutBarButtonTapped))
@@ -37,6 +39,7 @@ extension AccountSummaryViewController {
         setupNavigationBar()
         setupTableView()
         setupTableHeaderView()
+        setupRefreshControl()
         fetchData()
     }
     
@@ -80,6 +83,12 @@ extension AccountSummaryViewController {
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
+    
+    private func setupRefreshControl() {
+        refreshControl.tintColor = appColor
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -107,10 +116,14 @@ extension AccountSummaryViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Helpers
+// MARK: - Actions
 extension AccountSummaryViewController {
     @objc private func logoutBarButtonTapped() {
         NotificationCenter.default.post(name: .logout, object: nil)
+    }
+    
+    @objc private func refreshContent() {
+        fetchData()
     }
 }
 
@@ -119,8 +132,11 @@ extension AccountSummaryViewController {
     private func fetchData() {
         let group = DispatchGroup()
         
+        // Testing - random number selection
+        let userId = String(Int.random(in: 1..<4))
+        
         group.enter()
-        fetchProfile(forUserId: "1") { result in
+        fetchProfile(forUserId: userId) { result in
             switch result {
             case .success(let profile):
                 self.profile = profile
@@ -132,7 +148,7 @@ extension AccountSummaryViewController {
         }
         
         group.enter()
-        fetchAccounts(forUserId: "1") { result in
+        fetchAccounts(forUserId: userId) { result in
             switch result {
             case .success(let accounts):
                 self.accountsModel = accounts
@@ -144,6 +160,7 @@ extension AccountSummaryViewController {
         }
         group.notify(queue: .main) {
             self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
     
