@@ -22,6 +22,18 @@ final class AccountSummaryViewController: UIViewController {
     var headerView = AccountSummaryHeaderView(frame: .zero)
     let refreshControl = UIRefreshControl()
     
+    // Nerworking
+    var profileManager: ProfileManageable = ProfileManager()
+    
+    // Error alert
+    var errorAlert = defaultAlert {
+        didSet {
+            
+        }
+    }
+    
+    var isLoaded = false
+    
     lazy var logoutBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutBarButtonTapped))
         barButtonItem.tintColor = .label
@@ -50,6 +62,7 @@ extension AccountSummaryViewController {
         tableView.dataSource = self
         
         tableView.register(AccountSummaryTableViewCell.self, forCellReuseIdentifier: AccountSummaryTableViewCell.reuseID)
+        //        tableView.register(SkeletonCell.self, forCellReuseIdentifier: SkeletonCell.reuseID)
         tableView.rowHeight = AccountSummaryTableViewCell.rowHeight
         tableView.tableFooterView = UIView()
         
@@ -135,33 +148,48 @@ extension AccountSummaryViewController {
         // Testing - random number selection
         let userId = String(Int.random(in: 1..<4))
         
+        fetchProfile(group: group, userId: userId)
+        fetchAccounts(group: group, userId: userId)
+        group.notify(queue: .main) {
+            self.reloadView()
+        }
+    }
+    
+    private func fetchProfile(group: DispatchGroup, userId: String) {
         group.enter()
-        fetchProfile(forUserId: userId) { result in
+        profileManager.fetchProfile(forUserId: userId) { result in
             switch result {
             case .success(let profile):
                 self.profile = profile
-                self.configureTableHeaderView(with: profile)
             case .failure(let error):
-                print(error.localizedDescription)
+                self.displayError(error)
             }
             group.leave()
         }
-        
+    }
+    
+    private func fetchAccounts(group: DispatchGroup, userId: String) {
         group.enter()
         fetchAccounts(forUserId: userId) { result in
             switch result {
             case .success(let accounts):
                 self.accountsModel = accounts
-                self.configureAccountSummaryTableViewCell(with: accounts)
             case .failure(let error):
-                print(error.localizedDescription)
+                self.displayError(error)
             }
             group.leave()
         }
-        group.notify(queue: .main) {
-            self.tableView.reloadData()
-            self.tableView.refreshControl?.endRefreshing()
-        }
+    }
+    
+    private func reloadView() {
+        self.tableView.refreshControl?.endRefreshing()
+        
+        guard let profile = self.profile else { return }
+        
+        self.isLoaded = true
+        self.configureTableHeaderView(with: profile)
+        self.configureAccountSummaryTableViewCell(with: self.accountsModel)
+        self.tableView.reloadData()
     }
     
     private func configureTableHeaderView(with profile: Profile) {
@@ -177,5 +205,16 @@ extension AccountSummaryViewController {
                                                  accountName: $0.name,
                                                  balance: $0.amount)
         }
+    }
+}
+
+extension AccountSummaryViewController: Alertable {
+    
+}
+
+// MARK: - Unit testing
+extension AccountSummaryViewController {
+    func forceFetchProfile() {
+        fetchProfile(group: DispatchGroup(), userId: "1")
     }
 }
