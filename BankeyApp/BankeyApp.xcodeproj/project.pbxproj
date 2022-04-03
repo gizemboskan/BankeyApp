@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A4D238927F9D4A700F67EE4 /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D238827F9D4A700F67EE4 /* ShakeyBellView.swift */; };
 		7A6A05FD27F0CECA0027E1E7 /* AccountSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A05FC27F0CECA0027E1E7 /* AccountSummaryTableViewCell.swift */; };
 		7A6A060127F118900027E1E7 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060027F118900027E1E7 /* NSAttributedString+Extension.swift */; };
 		7A6A060427F1DB480027E1E7 /* AccountSummaryTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060327F1DB480027E1E7 /* AccountSummaryTableViewCellViewModel.swift */; };
@@ -15,6 +16,7 @@
 		7A6A060B27F1FFA60027E1E7 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060A27F1FFA60027E1E7 /* CurrencyFormatterTests.swift */; };
 		7A6A060D27F240490027E1E7 /* NSNotification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060C27F240490027E1E7 /* NSNotification.Name+Extension.swift */; };
 		7A6A060F27F2420E0027E1E7 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6A060E27F2420E0027E1E7 /* UITextField+Extension.swift */; };
+		7A6B6CA527F9EC6B00FFC442 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B6CA427F9EC6B00FFC442 /* UIView+Extension.swift */; };
 		7AA02AF727F5917000C60B22 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA02AF627F5917000C60B22 /* SkeletonLoadable.swift */; };
 		7AA02AF927F591DF00C60B22 /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA02AF827F591DF00C60B22 /* SkeletonCell.swift */; };
 		7AA02AFD27F5A33B00C60B22 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA02AFC27F5A33B00C60B22 /* Alertable.swift */; };
@@ -65,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A4D238827F9D4A700F67EE4 /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		7A6A05FC27F0CECA0027E1E7 /* AccountSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		7A6A060027F118900027E1E7 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		7A6A060327F1DB480027E1E7 /* AccountSummaryTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 		7A6A060A27F1FFA60027E1E7 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		7A6A060C27F240490027E1E7 /* NSNotification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+Extension.swift"; sourceTree = "<group>"; };
 		7A6A060E27F2420E0027E1E7 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		7A6B6CA427F9EC6B00FFC442 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7AA02AF627F5917000C60B22 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
 		7AA02AF827F591DF00C60B22 /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		7AA02AFC27F5A33B00C60B22 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
@@ -134,6 +138,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A4D238727F9D49400F67EE4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7A4D238827F9D4A700F67EE4 /* ShakeyBellView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		7A6A05FA27F0CE9F0027E1E7 /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +164,20 @@
 				7AA02AF827F591DF00C60B22 /* SkeletonCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7A6B6CA327F9EC2D00FFC442 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7AE5DD6927EE149C008FBF9D /* UIViewController+Extension.swift */,
+				7A6A060027F118900027E1E7 /* NSAttributedString+Extension.swift */,
+				7A6A060727F1E1E60027E1E7 /* Decimal+Extension.swift */,
+				7A6A060C27F240490027E1E7 /* NSNotification.Name+Extension.swift */,
+				7A6A060E27F2420E0027E1E7 /* UITextField+Extension.swift */,
+				7ABAEC1327F496F50093999C /* Date+Extension.swift */,
+				7A6B6CA427F9EC6B00FFC442 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7AA02AFE27F5AC2400C60B22 /* Networking */ = {
@@ -201,7 +227,9 @@
 				7AE5DD6E27EE16B2008FBF9D /* AccountSummary */,
 				7AE5DD6F27EE16D8008FBF9D /* MoveMoney */,
 				7AE5DD7027EE16E4008FBF9D /* More */,
+				7A4D238727F9D49400F67EE4 /* Components */,
 				7AE5DD6627EDB774008FBF9D /* Utils */,
+				7A6B6CA327F9EC2D00FFC442 /* Extensions */,
 				7AE5DD5727EA244B008FBF9D /* Files */,
 			);
 			path = BankeyApp;
@@ -262,13 +290,7 @@
 				7AA02AF627F5917000C60B22 /* SkeletonLoadable.swift */,
 				7AA02AFC27F5A33B00C60B22 /* Alertable.swift */,
 				7AE5DD6727EDB77D008FBF9D /* LocalState.swift */,
-				7AE5DD6927EE149C008FBF9D /* UIViewController+Extension.swift */,
-				7A6A060027F118900027E1E7 /* NSAttributedString+Extension.swift */,
 				7A6A060527F1E07C0027E1E7 /* CurrencyFormatter.swift */,
-				7A6A060727F1E1E60027E1E7 /* Decimal+Extension.swift */,
-				7A6A060C27F240490027E1E7 /* NSNotification.Name+Extension.swift */,
-				7A6A060E27F2420E0027E1E7 /* UITextField+Extension.swift */,
-				7ABAEC1327F496F50093999C /* Date+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -461,12 +483,14 @@
 				7AE5DD2527EA23AD008FBF9D /* AppDelegate.swift in Sources */,
 				7AE5DD7327EE172A008FBF9D /* AccountSummaryViewController.swift in Sources */,
 				7AA02AF727F5917000C60B22 /* SkeletonLoadable.swift in Sources */,
+				7A4D238927F9D4A700F67EE4 /* ShakeyBellView.swift in Sources */,
 				7AE5DD7927F0AE20008FBF9D /* AccountSummaryHeaderView.swift in Sources */,
 				7AE5DD6827EDB77D008FBF9D /* LocalState.swift in Sources */,
 				7AE5DD7527EE173A008FBF9D /* MoveMoneyViewController.swift in Sources */,
 				7A6A060D27F240490027E1E7 /* NSNotification.Name+Extension.swift in Sources */,
 				7ABAEC1A27F4AF940093999C /* AccountModel.swift in Sources */,
 				7ABAEC1627F49AF20093999C /* ProfileModel.swift in Sources */,
+				7A6B6CA527F9EC6B00FFC442 /* UIView+Extension.swift in Sources */,
 				7ABAEC1227F4964B0093999C /* AccountSummaryHeaderViewModel.swift in Sources */,
 				7A6A060427F1DB480027E1E7 /* AccountSummaryTableViewCellViewModel.swift in Sources */,
 				7AE5DD6D27EE15F4008FBF9D /* MainTabBarViewController.swift in Sources */,
