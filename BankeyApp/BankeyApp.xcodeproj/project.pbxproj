@@ -180,6 +180,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7A6B6CA627FA0D5300FFC442 /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				7AA02B0527F5AE9D00C60B22 /* AccountSummaryViewControllerTests.swift */,
+				7AA02B0127F5AE7900C60B22 /* ProfileTests.swift */,
+				7AA02B0327F5AE8800C60B22 /* AccountTests.swift */,
+			);
+			path = AccountSummary;
+			sourceTree = "<group>";
+		};
 		7AA02AFE27F5AC2400C60B22 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,10 +248,8 @@
 		7AE5DD3D27EA23B2008FBF9D /* BankeyAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				7A6B6CA627FA0D5300FFC442 /* AccountSummary */,
 				7A6A060A27F1FFA60027E1E7 /* CurrencyFormatterTests.swift */,
-				7AA02B0127F5AE7900C60B22 /* ProfileTests.swift */,
-				7AA02B0327F5AE8800C60B22 /* AccountTests.swift */,
-				7AA02B0527F5AE9D00C60B22 /* AccountSummaryViewControllerTests.swift */,
 			);
 			path = BankeyAppTests;
 			sourceTree = "<group>";

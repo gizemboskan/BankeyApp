@@ -15,15 +15,15 @@ class AccountSummaryViewControllerTests: XCTestCase {
     var mockManager: MockProfileManager!
     
     class MockProfileManager: ProfileManageable {
-        var profile: Profile?
+        var profile: ProfileModel?
         var error: NetworkError?
         
-        func fetchProfile(forUserId userId: String, completion: @escaping (Result<Profile, NetworkError>) -> Void) {
+        func fetchProfile(forUserId userId: String, completion: @escaping (Result<ProfileModel, NetworkError>) -> Void) {
             if error != nil {
                 completion(.failure(error!))
                 return
             }
-            profile = Profile(id: "1", firstName: "FirstName", lastName: "LastName")
+            profile = ProfileModel(id: "1", firstName: "FirstName", lastName: "LastName")
             completion(.success(profile!))
         }
     }

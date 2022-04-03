@@ -10,7 +10,7 @@ import UIKit
 final class AccountSummaryViewController: UIViewController {
     
     //Request Models
-    var profile: Profile?
+    var profile: ProfileModel?
     var accountsModel = [AccountModel]()
     
     // ViewModels
@@ -192,7 +192,7 @@ extension AccountSummaryViewController {
         self.tableView.reloadData()
     }
     
-    private func configureTableHeaderView(with profile: Profile) {
+    private func configureTableHeaderView(with profile: ProfileModel) {
         let vm = AccountSummaryHeaderViewModel(welcomeMessage: "Good morning,",
                                                name: profile.firstName,
                                                date: Date())
