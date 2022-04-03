@@ -62,12 +62,14 @@ extension LoginViewController {
         bankeyLabel.font = UIFont.systemFont(ofSize: 28.0, weight: .bold)
         bankeyLabel.numberOfLines = 0
         bankeyLabel.text = "Bankey"
+        bankeyLabel.alpha = 0
         
         bankeyInfoLabel.translatesAutoresizingMaskIntoConstraints = false
         bankeyInfoLabel.textAlignment = .center
         bankeyInfoLabel.textColor = .gray
         bankeyInfoLabel.numberOfLines = 0
         bankeyInfoLabel.text = "Your premium source for all things in banking!"
+        bankeyInfoLabel.alpha = 0
         
         loginView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -145,16 +147,16 @@ extension LoginViewController {
             return
         }
         
-        //        if username.isEmpty || password.isEmpty {
-        //            configureView(withMessage: "Username / password can not be empty")
-        //            return
-        //        }
+        if username.isEmpty || password.isEmpty {
+            configureView(withMessage: "Username / password can not be empty")
+            return
+        }
         
         if username == "Gizem" && password == "Welcome" {
             signInButton.configuration?.showsActivityIndicator = true
-        } else {
-            // configureView(withMessage: "Incorrect username / password")
             delegate?.didLogin()
+        } else {
+            configureView(withMessage: "Incorrect username / password")
         }
     }
     
@@ -167,16 +169,26 @@ extension LoginViewController {
 // MARK: - Animations
 private extension LoginViewController {
     func animate() {
-        let animator1 = UIViewPropertyAnimator(duration: 3.0, curve: .easeInOut) {
+        
+        let duration = 2.0
+        
+        let animator1 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
             self.titleLeadingAnchor?.constant = self.leadingEdgeOnScreen
             self.view.layoutIfNeeded()
         }
         animator1.startAnimation()
         
-        let animator2 = UIViewPropertyAnimator(duration: 3.0, curve: .easeInOut) {
+        let animator2 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
             self.subtitleLeadingAnchor?.constant = self.leadingEdgeOnScreen
             self.view.layoutIfNeeded()
         }
         animator2.startAnimation(afterDelay: 1.0)
+        
+        let animator3 = UIViewPropertyAnimator(duration: duration * 2, curve: .easeInOut) {
+            self.bankeyLabel.alpha = 1.0
+            self.bankeyInfoLabel.alpha = 1.0
+            self.view.layoutIfNeeded()
+        }
+        animator3.startAnimation(afterDelay: 1.0)
     }
 }

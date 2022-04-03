@@ -15,6 +15,7 @@ enum NetworkError: Error {
     case serverError
     case decodingError
 }
+
 protocol ProfileManageable: AnyObject {
     func fetchProfile(forUserId userId: String, completion: @escaping (Result<Profile,NetworkError>) -> Void) 
 }
