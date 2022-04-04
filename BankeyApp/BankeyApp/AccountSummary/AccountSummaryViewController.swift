@@ -46,23 +46,24 @@ final class AccountSummaryViewController: UIViewController {
 }
 
 // MARK: - Setup
-extension AccountSummaryViewController {
+private extension AccountSummaryViewController {
     private func setup() {
         setupNavigationBar()
         setupTableView()
         setupTableHeaderView()
         setupRefreshControl()
+        setupSkeletons()
         fetchData()
     }
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.backgroundColor = appColor
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(AccountSummaryTableViewCell.self, forCellReuseIdentifier: AccountSummaryTableViewCell.reuseID)
-        //        tableView.register(SkeletonCell.self, forCellReuseIdentifier: SkeletonCell.reuseID)
+        tableView.register(SkeletonCell.self, forCellReuseIdentifier: SkeletonCell.reuseID)
         tableView.rowHeight = AccountSummaryTableViewCell.rowHeight
         tableView.tableFooterView = UIView()
         
@@ -70,11 +71,11 @@ extension AccountSummaryViewController {
         layout()
     }
     
-    private func style() {
+    func style() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func layout() {
+    func layout() {
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -85,7 +86,7 @@ extension AccountSummaryViewController {
         ])
     }
     
-    private func setupTableHeaderView() {
+    func setupTableHeaderView() {
         var size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         size.width = UIScreen.main.bounds.width
         headerView.frame.size = size
@@ -93,14 +94,21 @@ extension AccountSummaryViewController {
         tableView.tableHeaderView = headerView
     }
     
-    private func setupNavigationBar() {
+    func setupNavigationBar() {
         navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
     
-    private func setupRefreshControl() {
+    func setupRefreshControl() {
         refreshControl.tintColor = appColor
         refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
         tableView.refreshControl = refreshControl
+    }
+    
+    func setupSkeletons() {
+        let row = AccountModel.makeSkeleton()
+        accountsModel = Array(repeating: row, count: 10)
+        
+        configureAccountSummaryTableViewCell(with: accountsModel)
     }
 }
 
@@ -108,11 +116,15 @@ extension AccountSummaryViewController {
 extension AccountSummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard !accountSummaryTableViewCellViewModel.isEmpty else { return UITableViewCell() }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryTableViewCell.reuseID, for: indexPath) as! AccountSummaryTableViewCell
         let account = accountSummaryTableViewCellViewModel[indexPath.row]
-        cell.configure(with: account)
         
+        if isLoaded {
+            let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryTableViewCell.reuseID, for: indexPath) as! AccountSummaryTableViewCell
+            cell.configure(with: account)
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: SkeletonCell.reuseID, for: indexPath) as! SkeletonCell
         return cell
     }
     
@@ -130,19 +142,28 @@ extension AccountSummaryViewController: UITableViewDelegate {
 }
 
 // MARK: - Actions
-extension AccountSummaryViewController {
-    @objc private func logoutBarButtonTapped() {
+private extension AccountSummaryViewController {
+    @objc func logoutBarButtonTapped() {
         NotificationCenter.default.post(name: .logout, object: nil)
     }
     
-    @objc private func refreshContent() {
+    @objc func refreshContent() {
+        reset()
+        setupSkeletons()
+        tableView.reloadData()
         fetchData()
+    }
+    
+    func reset() {
+        profile = nil
+        accountsModel = []
+        isLoaded = false
     }
 }
 
 // MARK: - Networking
-extension AccountSummaryViewController {
-    private func fetchData() {
+private extension AccountSummaryViewController {
+    func fetchData() {
         let group = DispatchGroup()
         
         // Testing - random number selection
@@ -155,7 +176,7 @@ extension AccountSummaryViewController {
         }
     }
     
-    private func fetchProfile(group: DispatchGroup, userId: String) {
+    func fetchProfile(group: DispatchGroup, userId: String) {
         group.enter()
         profileManager.fetchProfile(forUserId: userId) { result in
             switch result {
@@ -168,7 +189,7 @@ extension AccountSummaryViewController {
         }
     }
     
-    private func fetchAccounts(group: DispatchGroup, userId: String) {
+    func fetchAccounts(group: DispatchGroup, userId: String) {
         group.enter()
         fetchAccounts(forUserId: userId) { result in
             switch result {
@@ -181,7 +202,7 @@ extension AccountSummaryViewController {
         }
     }
     
-    private func reloadView() {
+    func reloadView() {
         self.tableView.refreshControl?.endRefreshing()
         
         guard let profile = self.profile else { return }
@@ -192,14 +213,14 @@ extension AccountSummaryViewController {
         self.tableView.reloadData()
     }
     
-    private func configureTableHeaderView(with profile: ProfileModel) {
+    func configureTableHeaderView(with profile: ProfileModel) {
         let vm = AccountSummaryHeaderViewModel(welcomeMessage: "Good morning,",
                                                name: profile.firstName,
                                                date: Date())
         headerView.configure(viewModel: vm)
     }
     
-    private func configureAccountSummaryTableViewCell(with accounts: [AccountModel]) {
+    func configureAccountSummaryTableViewCell(with accounts: [AccountModel]) {
         accountSummaryTableViewCellViewModel = accounts.map {
             AccountSummaryTableViewCellViewModel(accountType: $0.type,
                                                  accountName: $0.name,

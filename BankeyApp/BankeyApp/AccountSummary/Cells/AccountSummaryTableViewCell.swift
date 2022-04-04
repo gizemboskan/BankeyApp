@@ -39,8 +39,8 @@ final class AccountSummaryTableViewCell: UITableViewCell {
 }
 
 // MARK: - Setup & Layout
-extension AccountSummaryTableViewCell {
-    private func setup() {
+private extension AccountSummaryTableViewCell {
+    func setup() {
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         typeLabel.adjustsFontForContentSizeCategory = true
@@ -71,7 +71,9 @@ extension AccountSummaryTableViewCell {
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false
         let chevronImage = UIImage(systemName: "chevron.right")!.withTintColor(appColor, renderingMode: .alwaysOriginal)
         chevronImageView.image = chevronImage
-        
+    }
+    
+    func layout() {
         contentView.addSubview(typeLabel) // important! Add to the contentView!
         contentView.addSubview(underlineView)
         contentView.addSubview(nameLabel)
@@ -81,9 +83,7 @@ extension AccountSummaryTableViewCell {
         
         contentView.addSubview(balanceStackView)
         contentView.addSubview(chevronImageView)
-    }
-    
-    private func layout() {
+        
         NSLayoutConstraint.activate([
             typeLabel.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
             typeLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),

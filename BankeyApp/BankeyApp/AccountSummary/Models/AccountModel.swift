@@ -12,4 +12,8 @@ struct AccountModel: Codable {
     let name: String
     let amount: Decimal
     let createdDateTime: Date
+    
+    static func makeSkeleton() -> AccountModel {
+        AccountModel(id: "1", type: .Banking, name: "Account name", amount: 0.0, createdDateTime: Date())
+    }
 }
